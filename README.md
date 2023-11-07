@@ -68,9 +68,9 @@ SkyWalking
 
 ## 6.其他选择
 
-​	除了以上选择，我还使用了Java框架：MyBatis，前端库：ElementUI，容器技术：Docker，以及Git版本控制工具、GitHub代码托管平台。
+​	除了以上选择，我还使用了Java框架：MyBatis，前端库：ElementUI，web服务器：nginx，容器技术：Docker，以及Git版本控制工具、GitHub代码托管平台。
 
-# 3.项目具体实现
+# 3.项目后端具体实现
 
 ## 1.项目地址
 
@@ -183,3 +183,35 @@ https://github.com/Review7872/OnlineTicketSales.git
 > gateway的规则持久化需要将此微服务放置于nacos的SENTINEL_GROUP组内，而seate需要将微服务放置于SEATA_GROUP组内，故此两个组件不能同时使用
 
 ![](./images/img_20.png)
+
+# 4.项目前端实现记录
+
+# 5.项目部署
+
+## 1.Docker部署
+
+- 安装docker容器并启动docker容器
+
+  ```shell
+  sudo yum remove docker \
+                    docker-client \
+                    docker-client-latest \
+                    docker-common \
+                    docker-latest \
+                    docker-latest-logrotate \
+                    docker-logrotate \
+                    docker-engine
+  sudo yum install -y yum-utils
+  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  sudo systemctl start docker
+  ```
+
+- 安装项目镜像
+
+  ```
+  
+  ```
+
+  
+
