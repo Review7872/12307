@@ -90,7 +90,21 @@ https://github.com/Review7872/OnlineTicketSales.git
 
 ## 5.微服务组件E-R图
 
+![](./images/img_6.png)
 
+![](./images/img_7.png)
+
+![](./images/img_8.png)
+
+![](./images/img_9.png)
+
+![](./images/img_10.png)
+
+![](./images/img_11.png)
+
+![](./images/img_12.png)
+
+![](./images/img_13.png)
 
 ## 6.微服务组件整合E-R图
 
