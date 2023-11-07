@@ -180,7 +180,7 @@ https://github.com/Review7872/OnlineTicketSales.git
 
 ​	我们的项目分为三个层次，第一层为JDBC层，是Java与数据库的交互，第二层为主要业务层，第三层为暴露接口层。在第三层中，大多操作为引用主要业务层，只有在account组件里有引用sms组件与user组件，user组件的引用事务性不强，sms组件我们将使用消息队列解耦合。因此，我们需要在第一层与第二层之间添加分布式事务seate，以此保证我们的事务安全；在第三层添加流量防卫兵，以流量切入，从流量路由、流量控制、流 量整形、熔断降级、系统自适应过载保护、热点流量防护等多个维度来保障项目的稳定性；在第四层添加gateway进行身份认证、鉴权与服务引导。
 
-> gateway的规则持久化需要将此微服务放置于nacos的SENTINEL_GROUP组内，而seate需要将微服务放置于SEATA_GROUP组内，故此两个组件不能同时使用
+> sentinel的规则持久化需要将此微服务放置于nacos的SENTINEL_GROUP组内，而seate需要将微服务放置于SEATA_GROUP组内，故此两个组件不能同时使用
 
 ![](./images/img_20.png)
 
