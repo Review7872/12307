@@ -203,14 +203,30 @@ https://github.com/Review7872/OnlineTicketSales.git
                     docker-engine
   sudo yum install -y yum-utils
   sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-  sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-  sudo systemctl start docker
+  sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
   ```
 
-- 安装项目镜像
+- 添加国内镜像
 
+  ```shell
+  vim /etc/docker/daemon.json
+  {
+    "registry-mirrors": [
+      "https://dockerproxy.com",
+      "https://hub-mirror.c.163.com",
+      "https://mirror.baidubce.com",
+      "https://ccr.ccs.tencentyun.com",
+      "https://registry.docker-cn.com",
+      "http://hub-mirror.c.163.com",
+      "https://docker.mirrors.ustc.edu.cn"
+    ]
+  }
   ```
-  
+
+- 启动docker
+
+  ```shell
+  systemctl start docker
   ```
 
   
