@@ -18,19 +18,22 @@ public class PayController {
     @Autowired
     private PayService payService;
     @GetMapping("/selectAll")
-    @Cacheable(value = "order",key = "'payAll'")
+    @Cacheable(value = "order",key = "#root.methodName")
     public List<Pay> selectAll(){
         return payService.selectAll();
     }
     @GetMapping("/selectByPayStat")
+    @Cacheable(value = "order",key = "#root.methodName + #payStat")
     public List<Pay> selectByPayStat(byte payStat){
         return payService.selectByPayStat(payStat);
     }
     @GetMapping("/selectByPayWay")
+    @Cacheable(value = "order",key = "#root.methodName + #payWay")
     public List<Pay> selectByPayWay(byte payWay){
         return payService.selectByPayWay(payWay);
     }
     @GetMapping("/selectByPayWayAndPayStat")
+    @Cacheable(value = "order",key = "#root.methodName + #payWay + #payStat")
     public List<Pay> selectByPayWayAndPayStat(byte payWay, byte payStat){
         return payService.selectByPayWayAndPayStat(payWay,payStat);
     }

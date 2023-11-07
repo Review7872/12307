@@ -19,7 +19,7 @@ public class OrderController {
 
 
     @GetMapping("/select")
-    @Cacheable(value = "order", key = "'orderAll'")
+    @Cacheable(value = "orderSelect", key = "#root.methodName")
     public List<Order> selectAll() {
         return orderService.selectAllOrder();
     }
