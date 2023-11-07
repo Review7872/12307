@@ -116,6 +116,8 @@ https://github.com/Review7872/OnlineTicketSales.git
 
 ![](./images/img_3.png)
 
+
+
 ​	票务统计数据库：用于存储有关火车票销售和使用情况的数据，以便进行报表生成、分析和预测。这个数据库可以支持管理层决策和报告功能。
 
 ![](./images/img_4.png)

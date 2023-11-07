@@ -41,12 +41,16 @@ public interface PayMapper {
     Pay selectByPayId(long payId);
 
     @Insert("""
-            insert into pay values(#{payId},#{payWay},#{payStat},#{payTime})
+            insert into pay(pay_id) values(#{payId})
             """)
-    Integer insertPay(long payId, byte payWay, byte payStat, String payTime);
+    Integer insertPay(long payId);
 
     @Update("""
-            update pay set pay_stat = #{payStat} where pay_id = #{payId}
+            update pay set pay_stat = #{payStat},pay_time = #{payTime} where pay_id = #{payId}
             """)
-    Integer updatePayStat(byte payStat, long payId);
+    Integer updatePayStat(byte payStat, long payId, String payTime);
+    @Update("""
+            update pay set pay_stat = #{payWay} where pay_id = #{payId}
+            """)
+    Integer updatePayWay(byte payWay, long payId);
 }

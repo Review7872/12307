@@ -13,7 +13,8 @@ public interface PayService {
 
     Pay selectByPayId(long payId);
 
-    Integer insertPay( byte payWay, byte payStat);
+    long insertPay();
 
     Integer updatePayStat(byte payStat,long payId);
+    Integer updatePayWay(byte payWay, long payId);
 }

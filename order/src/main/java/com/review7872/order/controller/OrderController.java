@@ -1,9 +1,7 @@
 package com.review7872.order.controller;
 
-import com.review7872.order.config.MqConfig;
 import com.review7872.order.pojo.Order;
 import com.review7872.order.service.OrderService;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -16,8 +14,6 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private OrderService orderService;
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
 
 
     @GetMapping("/select")
@@ -40,12 +36,7 @@ public class OrderController {
     @PostMapping("/insert")
     @CacheEvict(value = "order", allEntries = true)
     public long insert(@RequestBody Order order) {
-        long l = orderService.insertOrder(order.getCardId(), order.getCarId(), order.getSeatId());
-        if (l == 0) {
-            return 0;
-        }
-        rabbitTemplate.convertAndSend(MqConfig.EXCHANGE_NAME,"pay",l);
-        return l;
+        return orderService.insertOrder(order.getCardId(), order.getCarId(), order.getSeatId());
     }
     @PostMapping("/pay")
     @CacheEvict(value = "order", allEntries = true)

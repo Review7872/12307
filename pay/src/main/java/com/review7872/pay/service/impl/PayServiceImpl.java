@@ -6,12 +6,14 @@ import com.review7872.pay.service.PayService;
 import com.review7872.pay.utils.SnowflakeIdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @Service
+@Transactional
 public class PayServiceImpl implements PayService {
     @Autowired
     private PayMapper payMapper;
@@ -40,14 +42,22 @@ public class PayServiceImpl implements PayService {
     }
 
     @Override
-    public Integer insertPay( byte payWay, byte payStat) {
-        return payMapper.insertPay(snowflakeIdGenerator.nextId(),
-                payWay,payStat,
-                simpleDateFormat.format(new Date()));
+    public long insertPay() {
+        long l = snowflakeIdGenerator.nextId();
+        Integer i = payMapper.insertPay(l);
+        if (i == 1){
+            return l;
+        }
+        return 0;
     }
 
     @Override
     public Integer updatePayStat(byte payStat, long payId) {
-        return payMapper.updatePayStat(payStat,payId);
+        return payMapper.updatePayStat(payStat,payId, simpleDateFormat.format(new Date()));
+    }
+
+    @Override
+    public Integer updatePayWay(byte payWay, long payId) {
+        return payMapper.updatePayWay(payWay,payId);
     }
 }
