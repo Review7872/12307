@@ -39,4 +39,8 @@ public interface OrderMapper {
             update order set seat_id=#{seatId} where order_id = #{orderId}
             """)
     Integer updateOrder(String seatId, Long orderId);
+    @Update("""
+            update order set pay_id=#{payId} where order_id = #{orderId}
+            """)
+    Integer updatePay(long payId, Long orderId);
 }

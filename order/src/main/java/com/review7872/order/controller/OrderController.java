@@ -1,15 +1,14 @@
 package com.review7872.order.controller;
 
+import com.review7872.order.config.MqConfig;
 import com.review7872.order.pojo.Order;
 import com.review7872.order.service.OrderService;
-import com.review7872.order.utils.SnowflakeIdGenerator;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -18,9 +17,8 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
     @Autowired
-    private SnowflakeIdGenerator snowflakeIdGenerator;
-    @Autowired
-    private SimpleDateFormat simpleDateFormat;
+    private RabbitTemplate rabbitTemplate;
+
 
     @GetMapping("/select")
     @Cacheable(value = "order", key = "'orderAll'")
@@ -41,12 +39,17 @@ public class OrderController {
 
     @PostMapping("/insert")
     @CacheEvict(value = "order", allEntries = true)
-    public Integer insert(@RequestBody Order order) {
-        Integer i = orderService.insertOrder(snowflakeIdGenerator.nextId(),
-                order.getCardId(), order.getCarId(), order.getSeatId(), simpleDateFormat.format(new Date()));
-        if (i == 1) {
-            //TODO 发送mq消息
+    public long insert(@RequestBody Order order) {
+        long l = orderService.insertOrder(order.getCardId(), order.getCarId(), order.getSeatId());
+        if (l == 0) {
+            return 0;
         }
-        return 0;
+        rabbitTemplate.convertAndSend(MqConfig.EXCHANGE_NAME,"pay",l);
+        return l;
+    }
+    @PostMapping("/pay")
+    @CacheEvict(value = "order", allEntries = true)
+    public Integer updatePay(long payId, Long orderId) {
+        return orderService.updatePay(payId,orderId);
     }
 }

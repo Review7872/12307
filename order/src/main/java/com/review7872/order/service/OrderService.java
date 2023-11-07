@@ -10,7 +10,8 @@ public interface OrderService {
 
     List<Order> selectOrderByCardId(Long cardId);
 
-    Integer insertOrder(Long orderId, Long cardId, Long carId, String seatId, String orderTime);
+    long insertOrder( Long cardId, Long carId, String seatId);
 
     Integer updateOrder(String seatId, Long orderId);
+    Integer updatePay(long payId, Long orderId);
 }
