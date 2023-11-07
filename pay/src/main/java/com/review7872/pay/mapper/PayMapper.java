@@ -35,6 +35,12 @@ public interface PayMapper {
     List<Pay> selectByPayWay(byte payWay);
 
     @Select("""
+            select pay_id,pay_way,pay_stat,pay_time from pay where pay_way = #{payWay} and pay_stat = #{payStat}
+            """)
+    @ResultMap("payRes")
+    List<Pay> selectByPayWayAndPayStat(byte payWay,byte payStat);
+
+    @Select("""
             select pay_id,pay_way,pay_stat,pay_time from pay where pay_id = #{payId}
             """)
     @ResultMap("payRes")
@@ -53,4 +59,8 @@ public interface PayMapper {
             update pay set pay_stat = #{payWay} where pay_id = #{payId}
             """)
     Integer updatePayWay(byte payWay, long payId);
+    @Update("""
+            update pay set pay_way=#{payWay},pay_stat = #{payStat} where pay_id = #{payId}
+            """)
+    Integer updatePayWayAndPayStat(byte payWay, byte payStat,long payId);
 }

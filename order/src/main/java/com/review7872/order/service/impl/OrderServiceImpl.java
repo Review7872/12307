@@ -25,16 +25,35 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private PayFeign payFeign;
 
+    /**
+     * 查询所有订单
+     * @return 查询结果
+     */
     @Override
     public List<Order> selectAllOrder() {
         return orderMapper.selectAllOrder();
     }
 
+    /**
+     * 根据证件号查询订单
+     * @param cardId 证件号
+     * @return 查询结果
+     */
     @Override
     public List<Order> selectOrderByCardId(Long cardId) {
+        if (cardId<1){
+            throw new RuntimeException("无效的证件号");
+        }
         return orderMapper.selectOrderByCardId(cardId);
     }
 
+    /**
+     * 新增订单，
+     * @param cardId 证件号
+     * @param carId 车次id
+     * @param seatId 车座
+     * @return 订单号
+     */
     @Override
     public long insertOrder(Long cardId, Long carId, String seatId) {
         long orderId = snowflakeIdGenerator.nextId();
@@ -48,15 +67,27 @@ public class OrderServiceImpl implements OrderService {
         if (i == 1) {
             return orderId;
         }else {
-            return 0;
+            throw new RuntimeException("新增订单失败");
         }
     }
 
+    /**
+     * 换座
+     * @param seatId 座位号
+     * @param orderId 订单号
+     * @return 是否成功
+     */
     @Override
     public Integer updateOrder(String seatId, Long orderId) {
         return orderMapper.updateOrder(seatId, orderId);
     }
 
+    /**
+     * 更新支付单号
+     * @param payId 支付单号
+     * @param orderId 订单号
+     * @return 结果
+     */
     @Override
     public Integer updatePay(long payId, Long orderId) {
         return orderMapper.updatePay(payId,orderId);

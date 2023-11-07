@@ -2,6 +2,7 @@ package com.review7872.order.controller;
 
 import com.review7872.order.pojo.Order;
 import com.review7872.order.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/order")
+@Slf4j
 public class OrderController {
     @Autowired
     private OrderService orderService;
@@ -36,6 +38,7 @@ public class OrderController {
     @PostMapping("/insert")
     @CacheEvict(value = "order", allEntries = true)
     public long insert(@RequestBody Order order) {
+        log.info(new StringBuffer().append(order.getCardId()).append("下单成功，车次是").append(order.getCarId()).append("，座位是").append(order.getSeatId()).toString());
         return orderService.insertOrder(order.getCardId(), order.getCarId(), order.getSeatId());
     }
     @PostMapping("/pay")
