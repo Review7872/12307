@@ -1,6 +1,18 @@
-[TOC]
+# 总结
 
-# 1.项目构想
+[项目构想](#1)
+
+[技术选型](#2)
+
+[项目后端具体实现](#3)
+
+[项目前端实现记录](#4)
+
+[项目部署](#5)
+
+[项目改进日记](#6)
+
+# <span id="1">1.项目构想</span>
 
 ## 1.维基百科介绍
 
@@ -14,7 +26,7 @@
 
 ​	因此，我决定以12306为灵感，打造自己的铁路购票项目——12307在线售票项目!
 
-# 2.技术选型
+# <span id="2">2.技术选型</span>
 
 ## 1.编程语言
 
@@ -72,7 +84,7 @@ Apache SkyWalking
 
 ​	除了以上选择，我们还使用了Java框架：MyBatis，前端库：ElementUI，web服务器：nginx，容器技术：Docker，以及Git版本控制工具、GitHub代码托管平台。
 
-# 3.项目后端具体实现
+# <span id="3">3.项目后端具体实现</span>
 
 ## 1.项目地址
 
@@ -184,9 +196,9 @@ https://github.com/Review7872/OnlineTicketSales.git
 
 ![](./images/img_20.png)
 
-# 4.项目前端实现记录
+# <span id="jump2">4.项目前端实现记录</span>
 
-# 5.项目部署
+# <span id="jump2">5.项目部署</span>
 
 ## 1.Docker部署
 
@@ -231,7 +243,7 @@ https://github.com/Review7872/OnlineTicketSales.git
 
   
 
-# 6.项目改进日记
+# <span id="jump2">6.项目改进日记</span>
 
 ## 1.关于座位与站点
 
