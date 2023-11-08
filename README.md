@@ -196,9 +196,9 @@ https://github.com/Review7872/OnlineTicketSales.git
 
 ![](./images/img_20.png)
 
-# <span id="jump2">4.项目前端实现记录</span>
+# <span id="4">4.项目前端实现记录</span>
 
-# <span id="jump2">5.项目部署</span>
+# <span id="5">5.项目部署</span>
 
 ## 1.Docker部署
 
@@ -243,7 +243,7 @@ https://github.com/Review7872/OnlineTicketSales.git
 
   
 
-# <span id="jump2">6.项目改进日记</span>
+# <span id="6">6.项目改进日记</span>
 
 ## 1.关于座位与站点
 
