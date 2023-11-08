@@ -16,11 +16,11 @@
 
 ## 1.编程语言
 
-​	近年来，随着互联网的蓬勃发展，各大编程语言都以令人惊叹的速度迅猛发展。在这众多编程语言中，Java毫无疑问承载着沉甸甸的期望。Java凭借其完善的生态系统和简洁的语法，赢得了广泛的喜爱，不仅在服务端表现出色，也在移动端和PC端大放异彩。作为服务端主要编程语言，它在高并发项目无疑是得到了行业内人士的高度肯定，因此，我选择Java语言来完成12307项目。
+​	近年来，随着互联网的蓬勃发展，各大编程语言都以令人惊叹的速度迅猛发展。在这众多编程语言中，Java毫无疑问承载着沉甸甸的期望。Java凭借其完善的生态系统和简洁的语法，赢得了广泛的喜爱，不仅在服务端表现出色，也在移动端和PC端大放异彩。作为服务端主要编程语言，它在高并发项目无疑是得到了行业内人士的高度肯定，因此，我们选择Java语言来完成12307项目。
 
 ## 2.微服务框架
 
-​	大型互联网项目的尽头是微服务，但与编程语言不同的是，开源的微服务框架并不多，SpringCloud与Dubbo是我们为数不多的选择。Dubbo是阿里巴巴公司的一款RPC远程过程调用工具，集成与SpringCloud，但Dubbo从 3.0 开始已经不再与 Spring Cloud Alibaba 进行集成，Dubbo的日益壮大，使得它可以和SpringCloud平起平坐。SpringFramework诞生于2002年，在那个编程语言刚刚兴起的年代，Java语言的SpringFramework无疑是带给Java一个“春天”，使得Java在众多编程语言中优势更明显，多年来，Spring的发展越发势不可挡，之后更是推出了微服务解决方案——SpringCloud，而后来SpringCloud的开发依赖的更多的却是Netflix公司的库与工具，但是近些年来中国的阿里巴巴公司对SpringCloud代码贡献无疑是使得SpringCloud更方便使用，而SpringCloudAlibaba的诞生，无疑是又压Dubbo一头。我这个项目选择SpringCloudAlibaba为我们的微服务框架，使用阿里巴巴与Pivotal提供的完美微服务解决方案作为12307项目的“骨架”。
+​	大型互联网项目的尽头是微服务，但与编程语言不同的是，开源的微服务框架并不多，SpringCloud与Dubbo是我们为数不多的选择。Dubbo是阿里巴巴公司的一款RPC远程过程调用工具，集成与SpringCloud，但Dubbo从 3.0 开始已经不再与 Spring Cloud Alibaba 进行集成，Dubbo的日益壮大，使得它可以和SpringCloud平起平坐。SpringFramework诞生于2002年，在那个编程语言刚刚兴起的年代，Java语言的SpringFramework无疑是带给Java一个“春天”，使得Java在众多编程语言中优势更明显，多年来，Spring的发展越发势不可挡，之后更是推出了微服务解决方案——SpringCloud，而后来SpringCloud的开发依赖的更多的却是Netflix公司的库与工具，但是近些年来中国的阿里巴巴公司对SpringCloud代码贡献无疑是使得SpringCloud更方便使用，而SpringCloudAlibaba的诞生，无疑是又压Dubbo一头。我们这个项目选择SpringCloudAlibaba为我们的微服务框架，使用阿里巴巴与Pivotal提供的完美微服务解决方案作为12307项目的“骨架”。
 
 ### 1.服务发现
 
@@ -68,7 +68,7 @@ Apache SkyWalking
 
 ## 6.其他选择
 
-​	除了以上选择，我还使用了Java框架：MyBatis，前端库：ElementUI，web服务器：nginx，容器技术：Docker，以及Git版本控制工具、GitHub代码托管平台。
+​	除了以上选择，我们还使用了Java框架：MyBatis，前端库：ElementUI，web服务器：nginx，容器技术：Docker，以及Git版本控制工具、GitHub代码托管平台。
 
 # 3.项目后端具体实现
 
@@ -118,11 +118,7 @@ https://github.com/Review7872/OnlineTicketSales.git
 
 ​	![](./images/img_22.png)
 
-​	票务统计数据库：用于存储有关火车票销售和使用情况的数据，以便进行报表生成、分析和预测。这个数据库可以支持管理层决策和报告功能。
-
-![](./images/img_4.png)
-
-​	短信通知数据库，我将对用户部分自主行为进行短信通知与记录。
+​	短信通知数据库, 我们将对用户部分自主行为进行短信通知与记录。
 
 ![](./images/img_5.png)
 
@@ -139,8 +135,6 @@ https://github.com/Review7872/OnlineTicketSales.git
 ![](./images/img_10.png)
 
 ![](./images/img_11.png)
-
-![](./images/img_12.png)
 
 ![](./images/img_13.png)
 
