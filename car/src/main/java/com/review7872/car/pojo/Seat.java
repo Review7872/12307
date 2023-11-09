@@ -9,9 +9,10 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Car implements Serializable {
-    private Long carId;
-    private String route;
-    private String car_num;
-    private Integer open;
+public class Seat implements Serializable {
+    private Integer seatLevel;
+    private String seatId;
+    private Integer money;
+    private Integer occupation;
+    private Integer cardId;
 }

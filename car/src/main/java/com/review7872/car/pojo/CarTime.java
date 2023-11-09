@@ -7,11 +7,10 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Car implements Serializable {
-    private Long carId;
+@NoArgsConstructor
+public class CarTime implements Serializable {
     private String route;
-    private String car_num;
-    private Integer open;
+    private String predictedTime;
+    private String realTime;
 }
