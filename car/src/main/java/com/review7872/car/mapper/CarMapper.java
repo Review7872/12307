@@ -44,7 +44,7 @@ public interface CarMapper {
             select car_id,route,car_num,open from car where car_id = #{carId}
             """)
     @ResultMap("carRes")
-    List<Car> selectOne(long carId);
+    Car selectOne(long carId);
 
     @Insert("""
             insert into car values(#{carId},#{route},#{carNum},#{open})

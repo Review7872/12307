@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-11-09T08:01:58.109Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="A89d19tHKoHeckiIW4vP" version="22.0.3" type="device">
+<mxfile host="Electron" modified="2023-11-09T11:33:34.103Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="vql_2PMGtozCh7g4rEBy" version="22.0.3" type="device">
   <diagram name="第 1 页" id="jt6VVJo7nu8GzwiU6wVw">
     <mxGraphModel dx="1036" dy="654" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2500" pageHeight="2200" math="0" shadow="0">
       <root>
@@ -25,7 +25,7 @@
         <mxCell id="OvFxD7z9jxdbEy_i_qH0-16" value="车次id（雪花算法）&lt;br&gt;途径（-xx-xx-xx）&lt;br&gt;车牌号&lt;br&gt;是否开启" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="17" y="932" width="120" height="79.5" as="geometry" />
         </mxCell>
-        <mxCell id="-K4Pnvhbvs1OvobaiyWg-2" value="座位等级&lt;br&gt;座位号&lt;br&gt;金额&lt;br&gt;是否被占&lt;br&gt;占用者身份证id" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="-K4Pnvhbvs1OvobaiyWg-2" value="座位等级&lt;br&gt;座位号&lt;br&gt;金额" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="211" y="831" width="241" height="79" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-4" value="seat_(car_id)_(car_num)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -109,7 +109,7 @@
           <mxGeometry x="74" y="46" width="120" height="65" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-53" value="car" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" parent="-K4Pnvhbvs1OvobaiyWg-50" vertex="1">
-          <mxGeometry x="77" y="150" width="120" height="87" as="geometry" />
+          <mxGeometry x="77" y="150" width="120" height="61" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-54" value="pay" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" parent="-K4Pnvhbvs1OvobaiyWg-50" vertex="1">
           <mxGeometry x="77" y="425" width="120" height="62" as="geometry" />
@@ -123,8 +123,11 @@
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-59" value="购票&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;查票&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;退票&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;改签&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;支付&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;退款&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;查询列车时间表&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;查询订单&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;增加车次&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;设置车座及其价格&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;记录车辆站点信息&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-K4Pnvhbvs1OvobaiyWg-50" vertex="1">
           <mxGeometry x="296" y="77.5" width="185" height="402.5" as="geometry" />
         </mxCell>
-        <mxCell id="-K4Pnvhbvs1OvobaiyWg-114" value="time_(car_id)_(date)" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" parent="-K4Pnvhbvs1OvobaiyWg-50" vertex="1">
-          <mxGeometry x="63" y="298" width="160" height="89" as="geometry" />
+        <mxCell id="-K4Pnvhbvs1OvobaiyWg-114" value="time_(car_id)_(car_num)" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" parent="-K4Pnvhbvs1OvobaiyWg-50" vertex="1">
+          <mxGeometry x="63" y="319" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="KYG8FHqesxUZUU_Dzbcc-9" value="seat_(car_id)_(car_num)" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="-K4Pnvhbvs1OvobaiyWg-50">
+          <mxGeometry x="63" y="220" width="160" height="78" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-60" value="通知日期&lt;br&gt;通知内容&lt;br&gt;是否成功通知" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="160" y="1371" width="206" height="98" as="geometry" />
@@ -246,7 +249,7 @@
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-132" value="&lt;b&gt;&lt;font style=&quot;font-size: 27px;&quot;&gt;gateway&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="2064" y="1972" width="226" height="108" as="geometry" />
         </mxCell>
-        <mxCell id="KYG8FHqesxUZUU_Dzbcc-1" value="途径站&lt;br&gt;预计到达时间&lt;br&gt;实际到站时间" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="KYG8FHqesxUZUU_Dzbcc-1" value="途径站&lt;br&gt;预计到达时间&lt;br&gt;实际到站时间&lt;br&gt;是否被占&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;占用者身份证id" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="212" y="973" width="241" height="79" as="geometry" />
         </mxCell>
         <mxCell id="KYG8FHqesxUZUU_Dzbcc-2" value="time_(car_id)_(car_num)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">

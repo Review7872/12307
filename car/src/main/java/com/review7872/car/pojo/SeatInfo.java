@@ -7,11 +7,9 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Seat implements Serializable {
-    private String seatLevel;
-    private Integer num;
-    private Integer remainder;
-    private Integer money;
+@NoArgsConstructor
+public class SeatInfo implements Serializable {
+    private Integer occupation;
+    private Long cardId;
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -13,4 +14,5 @@ public class CarTime implements Serializable {
     private String route;
     private String predictedTime;
     private String realTime;
+    private List<SeatInfo> seats;
 }
