@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class CarTimeList extends ArrayList<CarTime> implements Serializable {
     public void setRealTime(String route,String readTime){
@@ -53,4 +52,32 @@ public class CarTimeList extends ArrayList<CarTime> implements Serializable {
             }
         });
     }
+    public int getOcc(String beginRoute,String endRoute,String seatId,SeatList seatList){
+        AtomicBoolean b = new AtomicBoolean(false);
+        for (CarTime carTime:this) {
+            if (beginRoute.equals(carTime.getRoute())){
+                b.set(true);
+            }
+            if (b.get()){
+                int j = 0;
+                String seatLevel = seatId.substring(0, 1);
+                for (Seat seat : seatList) {
+                    if (seatLevel.equals(seat.getSeatLevel())) {
+                        break;
+                    } else {
+                        j += seat.getNum();
+                    }
+                }
+                SeatInfo seatInfo = carTime.getSeats().get(j);
+                if (seatInfo.getOccupation()==1){
+                    return 1;
+                }
+                if (endRoute.equals(carTime.getRoute())){
+                    b.set(false);
+                }
+            }
+        }
+        return 0;
+    }
+
 }
