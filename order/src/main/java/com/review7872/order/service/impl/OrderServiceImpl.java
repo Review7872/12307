@@ -3,7 +3,6 @@ package com.review7872.order.service.impl;
 import com.review7872.order.mapper.OrderMapper;
 import com.review7872.order.pojo.Order;
 import com.review7872.order.service.OrderService;
-import com.review7872.order.service.PayFeign;
 import com.review7872.order.utils.SnowflakeIdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +21,6 @@ public class OrderServiceImpl implements OrderService {
     private SnowflakeIdGenerator snowflakeIdGenerator;
     @Autowired
     private SimpleDateFormat simpleDateFormat;
-    @Autowired
-    private PayFeign payFeign;
 
     /**
      * 查询所有订单
@@ -57,12 +54,8 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public long insertOrder(Long cardId, Long carId, String seatId) {
         long orderId = snowflakeIdGenerator.nextId();
-        long payId = payFeign.insertPay();
-        if (payId == 0){
-            throw new RuntimeException("生成支付单号异常");
-        }
         Integer i = orderMapper.insertOrder(orderId,
-                cardId, carId, seatId,payId,
+                cardId, carId, seatId,
                 simpleDateFormat.format(new Date()));
         if (i == 1) {
             return orderId;

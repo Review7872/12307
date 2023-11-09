@@ -31,9 +31,9 @@ public interface OrderMapper {
     List<Order> selectOrderByCardId(Long cardId);
 
     @Insert("""
-            insert into order values(#{orderId},#{cardId},#{carId},#{seatId},#{payId},#{orderTime})
+            insert into order(order_id,card_id,car_id,seat_id,order_time) values(#{orderId},#{cardId},#{carId},#{seatId},#{orderTime})
             """)
-    Integer insertOrder(Long orderId, Long cardId, Long carId, String seatId,Long payId, String orderTime);
+    Integer insertOrder(Long orderId, Long cardId, Long carId, String seatId, String orderTime);
 
     @Update("""
             update order set seat_id=#{seatId} where order_id = #{orderId}

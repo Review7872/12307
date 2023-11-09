@@ -12,6 +12,6 @@ import java.io.Serializable;
 public class Car implements Serializable {
     private Long carId;
     private String route;
-    private String car_num;
+    private String carNum;
     private Integer open;
 }
