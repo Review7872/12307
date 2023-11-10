@@ -33,5 +33,7 @@ public class SeatList extends ArrayList<Seat> implements Serializable {
         String seatLevel = seatId.substring(0,1);
         return remainder(seatLevel);
     }
-
+    public SeatList all(){
+        return this;
+    }
 }

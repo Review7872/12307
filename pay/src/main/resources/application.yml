@@ -11,3 +11,5 @@ spring:
   config:
     import:
       - optional:nacos:${spring.application.name}.${spring.cloud.nacos.config.file-extension}
+server:
+  port: 8082

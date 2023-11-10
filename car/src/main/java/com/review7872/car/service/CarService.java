@@ -1,6 +1,7 @@
 package com.review7872.car.service;
 
 import com.review7872.car.pojo.Car;
+import com.review7872.car.pojo.Seat;
 
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,7 @@ public interface CarService {
 
     Car selectOne(long carId);
 
-    int insertCar(long carId, Map<String,String> routeAndTime, String carNum, int open);
+    int insertCar(long carId, Map<String,String> routeAndTime, List<Seat> seatS, String carNum, int open);
 
     int updateRoute(Map<String,String> routeAndTime, long carId);
 

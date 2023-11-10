@@ -2,6 +2,7 @@ package com.review7872.car.service.impl;
 
 import com.review7872.car.mapper.CarMapper;
 import com.review7872.car.pojo.Car;
+import com.review7872.car.pojo.Seat;
 import com.review7872.car.service.CarService;
 import com.review7872.car.service.CarTimeService;
 import com.review7872.car.service.SeatListService;
@@ -48,13 +49,15 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public int insertCar(long carId, Map<String,String> routeAndTime, String carNum, int open) {
+    public int insertCar(long carId, Map<String,String> routeAndTime, List<Seat> seatS, String carNum, int open) {
         StringBuffer strRoute = new StringBuffer();
         routeAndTime.forEach((m,n)-> strRoute.append("-").append(m));
-        /*carTimeService.addTime(new StringBuffer().append("seat_").append(carId).append("_").
-                        append(carNum).toString()
-                ,routeAndTime);*/
-        // todo
+        seatListService.createSeat(
+                new StringBuffer("seat").append("_").append(carId).append("_").append(carNum).toString()
+                ,seatS);
+        carTimeService.createCatTime(
+                new StringBuffer("time").append("_").append(carId).append("_").append(carNum).toString()
+                ,routeAndTime,seatS);
         return carMapper.insertCar(carId, strRoute.toString(), carNum, open);
 
     }
@@ -63,10 +66,10 @@ public class CarServiceImpl implements CarService {
     public int updateRoute(Map<String,String> routeAndTime, long carId) {
         StringBuffer strRoute = new StringBuffer();
         routeAndTime.forEach((m,n)-> strRoute.append("-").append(m));
-        /*carTimeService.addTime(new StringBuffer().append("seat_").append(carId).append("_").
-                        append(this.selectOne(carId).getCarNum()).toString()
-                ,routeAndTime);*/
-        // todo
+        Car car = selectOne(carId);
+        carTimeService.updateCatTime(
+                new StringBuffer("time").append("_").append(carId).append("_").append(car.getCarNum()).toString(),
+                routeAndTime);
         return carMapper.updateRoute(strRoute.toString(), carId);
 
     }
