@@ -6,7 +6,10 @@ import com.review7872.car.pojo.Seat;
 import com.review7872.car.service.CarService;
 import com.review7872.car.service.CarTimeService;
 import com.review7872.car.service.SeatListService;
+import com.review7872.car.utils.SnowflakeIdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +25,8 @@ public class CarServiceImpl implements CarService {
     private CarTimeService carTimeService;
     @Autowired
     private SeatListService seatListService;
+    @Autowired
+    private SnowflakeIdGenerator snowflakeIdGenerator;
 
     @Override
     public List<Car> selectAll() {
@@ -39,34 +44,38 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> selectAllByRoute(String beginRoute, String endRoute) {
-        return carMapper.selectAllByRoute("-" + beginRoute, "-" + endRoute);
+    public List<Car> selectAllByRoute(String beginRoute, String endRoute, int open) {
+        return carMapper.selectAllByRoute("-" + beginRoute, "-" + endRoute, open);
     }
 
     @Override
+    @Cacheable(value = "carInfo", key = "'car' + #carId")
     public Car selectOne(long carId) {
         return carMapper.selectOne(carId);
     }
 
     @Override
-    public int insertCar(long carId, Map<String,String> routeAndTime, List<Seat> seatS, String carNum, int open) {
+    @CacheEvict(value = "carInfo", allEntries = true)
+    public long insertCar(Map<String, String> routeAndTime, List<Seat> seatS, String carNum, int open) {
+        long carId = snowflakeIdGenerator.nextId();
         StringBuffer strRoute = new StringBuffer();
-        routeAndTime.forEach((m,n)-> strRoute.append("-").append(m));
+        routeAndTime.forEach((m, n) -> strRoute.append("-").append(m));
         seatListService.createSeat(
                 new StringBuffer("seat").append("_").append(carId).append("_").append(carNum).toString()
-                ,seatS);
+                , seatS);
         carTimeService.createCatTime(
                 new StringBuffer("time").append("_").append(carId).append("_").append(carNum).toString()
-                ,routeAndTime,seatS);
+                , routeAndTime, seatS);
         return carMapper.insertCar(carId, strRoute.toString(), carNum, open);
 
     }
 
     @Override
-    public int updateRoute(Map<String,String> routeAndTime, long carId) {
+    @CacheEvict(value = "carInfo", allEntries = true)
+    public int updateRoute(Map<String, String> routeAndTime, long carId) {
         StringBuffer strRoute = new StringBuffer();
-        routeAndTime.forEach((m,n)-> strRoute.append("-").append(m));
-        Car car = selectOne(carId);
+        routeAndTime.forEach((m, n) -> strRoute.append("-").append(m));
+        Car car = carMapper.selectOne(carId);
         carTimeService.updateCatTime(
                 new StringBuffer("time").append("_").append(carId).append("_").append(car.getCarNum()).toString(),
                 routeAndTime);
@@ -75,12 +84,19 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    @CacheEvict(value = "carInfo", allEntries = true)
     public int updateCarNum(String carNum, long carId) {
         return carMapper.updateCarNum(carNum, carId);
     }
 
     @Override
+    @CacheEvict(value = "carInfo", allEntries = true)
     public int updateOpen(String open, long carId) {
         return carMapper.updateOpen(open, carId);
+    }
+
+    @Override
+    public List<Car> selectByCarNum(String carNum) {
+        return carMapper.selectByCarNum(carNum);
     }
 }

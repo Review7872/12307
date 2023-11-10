@@ -35,10 +35,10 @@ public interface CarMapper {
     List<Car> selectAllByOpenAndCarNum(int open, String carNum);
 
     @Select("""
-            select car_id,route,car_num,open from car where route like '%'#{beginRoute}'%'#{endRoute}'%'
+            select car_id,route,car_num,open from car where route like '%'#{beginRoute}'%'#{endRoute}'%' and open = #{open}
             """)
     @ResultMap("carRes")
-    List<Car> selectAllByRoute(String beginRoute, String endRoute);
+    List<Car> selectAllByRoute(String beginRoute, String endRoute, int open);
 
     @Select("""
             select car_id,route,car_num,open from car where car_id = #{carId}
@@ -55,12 +55,20 @@ public interface CarMapper {
             update car set route = #{route} where car_id = #{carId}
             """)
     int updateRoute(String route, long carId);
+
     @Update("""
             update car set car_num = #{carNum} where car_id = #{carId}
             """)
     int updateCarNum(String carNum, long carId);
+
     @Update("""
             update car set open = #{open} where car_id = #{carId}
             """)
     int updateOpen(String open, long carId);
+
+    @Select("""
+            select car_id,route,car_num,open from car where car_num like '%'#{carNum}'%'
+            """)
+    @ResultMap("carRes")
+    List<Car> selectByCarNum(String carNum);
 }

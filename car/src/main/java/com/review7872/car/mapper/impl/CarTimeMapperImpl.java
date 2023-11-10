@@ -10,11 +10,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CarTimeMapperImpl implements CarTimeMapper {
     @Autowired
-    private RedisTemplate<String,String> redisTemplate;
-    public void setRedisData(String key,CarTimeList carTimes){
+    private RedisTemplate<String, String> redisTemplate;
+
+    public void setRedisData(String key, CarTimeList carTimes) {
         redisTemplate.opsForValue().set(key, JSON.toJSONString(carTimes));
     }
-    public CarTimeList getRedisData(String key){
+
+    public CarTimeList getRedisData(String key) {
         return (CarTimeList) JSON.parse(redisTemplate.opsForValue().get(key));
     }
 }

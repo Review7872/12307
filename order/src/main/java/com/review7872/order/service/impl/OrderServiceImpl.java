@@ -24,6 +24,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 查询所有订单
+     *
      * @return 查询结果
      */
     @Override
@@ -33,12 +34,13 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 根据证件号查询订单
+     *
      * @param cardId 证件号
      * @return 查询结果
      */
     @Override
     public List<Order> selectOrderByCardId(Long cardId) {
-        if (cardId<1){
+        if (cardId < 1) {
             throw new RuntimeException("无效的证件号");
         }
         return orderMapper.selectOrderByCardId(cardId);
@@ -46,8 +48,9 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 新增订单，
+     *
      * @param cardId 证件号
-     * @param carId 车次id
+     * @param carId  车次id
      * @param seatId 车座
      * @return 订单号
      */
@@ -59,14 +62,15 @@ public class OrderServiceImpl implements OrderService {
                 simpleDateFormat.format(new Date()));
         if (i == 1) {
             return orderId;
-        }else {
+        } else {
             throw new RuntimeException("新增订单失败");
         }
     }
 
     /**
      * 换座
-     * @param seatId 座位号
+     *
+     * @param seatId  座位号
      * @param orderId 订单号
      * @return 是否成功
      */
@@ -77,12 +81,13 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 更新支付单号
-     * @param payId 支付单号
+     *
+     * @param payId   支付单号
      * @param orderId 订单号
      * @return 结果
      */
     @Override
     public Integer updatePay(long payId, Long orderId) {
-        return orderMapper.updatePay(payId,orderId);
+        return orderMapper.updatePay(payId, orderId);
     }
 }

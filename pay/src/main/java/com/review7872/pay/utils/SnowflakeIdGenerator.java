@@ -104,9 +104,9 @@ public class SnowflakeIdGenerator {
          */
         long timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;
         return ((timestamp - twepoch) << timestampLeftShift) //
-                | (hostId << datacenterIdShift) //
-                | (serverId << sequenceBits) //
-                | sequence;
+               | (hostId << datacenterIdShift) //
+               | (serverId << sequenceBits) //
+               | sequence;
     }
 
     /**

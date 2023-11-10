@@ -41,9 +41,10 @@ public class OrderController {
         log.info(new StringBuffer().append(order.getCardId()).append("下单成功，车次是").append(order.getCarId()).append("，座位是").append(order.getSeatId()).toString());
         return orderService.insertOrder(order.getCardId(), order.getCarId(), order.getSeatId());
     }
+
     @PostMapping("/pay")
     @CacheEvict(value = "order", allEntries = true)
     public Integer updatePay(long payId, Long orderId) {
-        return orderService.updatePay(payId,orderId);
+        return orderService.updatePay(payId, orderId);
     }
 }

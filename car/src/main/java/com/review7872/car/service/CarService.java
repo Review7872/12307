@@ -13,15 +13,17 @@ public interface CarService {
 
     List<Car> selectAllByOpenAndCarNum(int open, String carNum);
 
-    List<Car> selectAllByRoute(String beginRoute, String endRoute);
+    List<Car> selectAllByRoute(String beginRoute, String endRoute, int open);
 
     Car selectOne(long carId);
 
-    int insertCar(long carId, Map<String,String> routeAndTime, List<Seat> seatS, String carNum, int open);
+    long insertCar(Map<String, String> routeAndTime, List<Seat> seatS, String carNum, int open);
 
-    int updateRoute(Map<String,String> routeAndTime, long carId);
+    int updateRoute(Map<String, String> routeAndTime, long carId);
 
     int updateCarNum(String carNum, long carId);
 
     int updateOpen(String open, long carId);
+
+    List<Car> selectByCarNum(String carNum);
 }

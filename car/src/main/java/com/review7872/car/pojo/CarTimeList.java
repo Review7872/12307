@@ -7,11 +7,12 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CarTimeList extends ArrayList<CarTime> implements Serializable {
-    public CarTimeList getAllTime(){
+    public CarTimeList getAllTime() {
         CarTimeList carTimes = this;
-        carTimes.forEach(i-> i.setSeats(null));
+        carTimes.forEach(i -> i.setSeats(null));
         return carTimes;
     }
+
     public void setRealTime(String route, String readTime) {
         Optional<CarTime> opt = this.stream().filter(carTime -> route.equals(carTime.getRoute())).findFirst();
         if (opt.isPresent()) {
@@ -49,7 +50,7 @@ public class CarTimeList extends ArrayList<CarTime> implements Serializable {
                 b.set(true);
             }
             if (b.get()) {
-                int index = getIndex(seatId,seatList);
+                int index = getIndex(seatId, seatList);
                 SeatInfo seatInfo = i.getSeats().get(index);
                 seatInfo.setOccupation(1);
                 seatInfo.setCardId(cardId);
@@ -61,26 +62,45 @@ public class CarTimeList extends ArrayList<CarTime> implements Serializable {
         });
     }
 
+    public void setOccBack(String beginRoute, String endRoute, String seatId, SeatList seatList) {
+        AtomicBoolean b = new AtomicBoolean(false);
+        this.forEach(i -> {
+            if (beginRoute.equals(i.getRoute())) {
+                b.set(true);
+            }
+            if (b.get()) {
+                int index = getIndex(seatId, seatList);
+                SeatInfo seatInfo = i.getSeats().get(index);
+                seatInfo.setOccupation(2);
+                seatInfo.setCardId(null);
+                i.getSeats().set(index, seatInfo);
+                if (endRoute.equals(i.getRoute())) {
+                    b.set(false);
+                }
+            }
+        });
+    }
+
     /**
-     * 这个方法的作用是检查从 beginRoute 到 endRoute 这个区间 某个座位有没有人坐
+     * 这个方法的作用是检查从 beginRoute 到 endRoute 这个区间 某个座位人的cardId
      *
      * @param beginRoute 起点
      * @param endRoute   终点
      * @param seatId     座位id
      * @param seatList   车辆信息
-     * @return 返回1则是有人，返回0既是没人
+     * @return 返回0既是没人
      */
-    public int getOcc(String beginRoute, String endRoute, String seatId, SeatList seatList) {
+    public long getOcc(String beginRoute, String endRoute, String seatId, SeatList seatList) {
         AtomicBoolean b = new AtomicBoolean(false);
         for (CarTime carTime : this) {
             if (beginRoute.equals(carTime.getRoute())) {
                 b.set(true);
             }
             if (b.get()) {
-                int index = getIndex(seatId,seatList);
+                int index = getIndex(seatId, seatList);
                 SeatInfo seatInfo = carTime.getSeats().get(index);
                 if (seatInfo.getOccupation() == 1) {
-                    return 1;
+                    return seatInfo.getCardId();
                 }
                 if (endRoute.equals(carTime.getRoute())) {
                     b.set(false);
@@ -98,10 +118,10 @@ public class CarTimeList extends ArrayList<CarTime> implements Serializable {
      * @param seatList   列车类型
      * @return 很多的站点的座位信息
      */
-    public List<Object> getRouteOcc(String beginRoute, String endRoute , SeatList seatList){
+    public List<Object> getRouteOcc(String beginRoute, String endRoute, SeatList seatList) {
         AtomicBoolean b = new AtomicBoolean(false);
         List<Object> list = new ArrayList<>();
-        this.forEach(carTime->{
+        this.forEach(carTime -> {
             if (beginRoute.equals(carTime.getRoute())) {
                 b.set(true);
             }
@@ -115,6 +135,7 @@ public class CarTimeList extends ArrayList<CarTime> implements Serializable {
         });
         return list;
     }
+
     /**
      * 这个方法的作用是返回指定站点座位情况
      *
@@ -130,12 +151,13 @@ public class CarTimeList extends ArrayList<CarTime> implements Serializable {
 
     /**
      * 返回指定站点指定座位的证件号
-     * @param route 站点
-     * @param seatId 座位id
+     *
+     * @param route    站点
+     * @param seatId   座位id
      * @param seatList 车辆类型
      * @return 证件号
      */
-    public long getCardId(String route, String seatId, SeatList seatList){
+    public long getCardId(String route, String seatId, SeatList seatList) {
         List<SeatInfo> allOcc = getAllOcc(route, seatList);
         int index = getIndex(seatId, seatList);
         return allOcc.get(index).getCardId();
@@ -143,11 +165,12 @@ public class CarTimeList extends ArrayList<CarTime> implements Serializable {
 
     /**
      * 这个方法可以根据座位号与车辆信息，拿到这个座位在 List<SeatInfo> 中的下标
-     * @param seatId 座位号
+     *
+     * @param seatId   座位号
      * @param seatList 车辆类型
      * @return 下标
      */
-    public int getIndex(String seatId, SeatList seatList){
+    public int getIndex(String seatId, SeatList seatList) {
         int j = 0;
         String seatLevel = seatId.substring(0, 1);
         int index = Integer.parseInt(seatId.substring(1));

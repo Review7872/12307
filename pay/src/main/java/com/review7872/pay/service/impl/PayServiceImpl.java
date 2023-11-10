@@ -24,6 +24,7 @@ public class PayServiceImpl implements PayService {
 
     /**
      * 查询所有支付订单
+     *
      * @return 查询结果
      */
     @Override
@@ -33,6 +34,7 @@ public class PayServiceImpl implements PayService {
 
     /**
      * 根据支付状态查询所有支付订单
+     *
      * @param payStat 支付状态
      * @return 查询结果
      */
@@ -46,6 +48,7 @@ public class PayServiceImpl implements PayService {
 
     /**
      * 根据支付方式查询所有支付订单
+     *
      * @param payWay 支付方式
      * @return 查询结果
      */
@@ -59,7 +62,8 @@ public class PayServiceImpl implements PayService {
 
     /**
      * 根据支付方式与支付结果查询
-     * @param payWay 支付方式
+     *
+     * @param payWay  支付方式
      * @param payStat 支付结果
      * @return 查询结果
      */
@@ -71,11 +75,12 @@ public class PayServiceImpl implements PayService {
         if (payStat > 3 || payStat < 0) {
             throw new RuntimeException("无效的支付状态");
         }
-        return payMapper.selectByPayWayAndPayStat(payWay,payStat);
+        return payMapper.selectByPayWayAndPayStat(payWay, payStat);
     }
 
     /**
      * 根据支付单号查询
+     *
      * @param payId 单号
      * @return 查询结果
      */
@@ -89,13 +94,14 @@ public class PayServiceImpl implements PayService {
 
     /**
      * 新建支付订单
+     *
      * @return 新建的支付单号
      */
     @Override
     public long insertPay() {
         long l = snowflakeIdGenerator.nextId();
         Integer i = payMapper.insertPay(l);
-        if (i != 1){
+        if (i != 1) {
             throw new RuntimeException("新建支付订单失败");
         }
         return l;
@@ -103,8 +109,9 @@ public class PayServiceImpl implements PayService {
 
     /**
      * 修改支付状态
+     *
      * @param payStat 支付状态
-     * @param payId 支付单号
+     * @param payId   支付单号
      * @return 是否成功
      */
     @Override
@@ -115,13 +122,14 @@ public class PayServiceImpl implements PayService {
         if (payId < 1) {
             throw new RuntimeException("无效的支付单号");
         }
-        return payMapper.updatePayStat(payStat,payId, simpleDateFormat.format(new Date()));
+        return payMapper.updatePayStat(payStat, payId, simpleDateFormat.format(new Date()));
     }
 
     /**
      * 修改支付方式
+     *
      * @param payWay 支付方式
-     * @param payId 支付单号
+     * @param payId  支付单号
      * @return 是否成功
      */
     @Override
@@ -132,14 +140,15 @@ public class PayServiceImpl implements PayService {
         if (payId < 1) {
             throw new RuntimeException("无效的支付单号");
         }
-        return payMapper.updatePayWay(payWay,payId);
+        return payMapper.updatePayWay(payWay, payId);
     }
 
     /**
      * 根据支付单号修改支付方式与支付结果
-     * @param payWay 支付方式
+     *
+     * @param payWay  支付方式
      * @param payStat 支付结果
-     * @param payId 支付单号
+     * @param payId   支付单号
      * @return 是否成功
      */
     @Override
@@ -153,6 +162,6 @@ public class PayServiceImpl implements PayService {
         if (payId < 1) {
             throw new RuntimeException("无效的支付单号");
         }
-        return payMapper.updatePayWayAndPayStat(payWay,payStat,payId);
+        return payMapper.updatePayWayAndPayStat(payWay, payStat, payId);
     }
 }
