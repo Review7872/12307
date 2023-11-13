@@ -6,6 +6,7 @@ import org.redisson.config.Config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 public class BeanConfig {
@@ -23,6 +24,8 @@ public class BeanConfig {
     @Bean
     public Redisson getRedisson() {
         Config config = new Config();
+        System.out.println(redisHost);
+        System.out.println(redisPort);
         config.useSingleServer()
                 .setAddress(redisHost + ":" + redisPort)
                 .setDatabase(0);

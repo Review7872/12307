@@ -7,9 +7,9 @@ spring:
         file-extension: yml
         server-addr: 127.0.0.1:8848
   application:
-    name: order
+    name: butTickets
   config:
     import:
       - optional:nacos:${spring.application.name}.${spring.cloud.nacos.config.file-extension}
 server:
-  port: 8081
+  port: 8086

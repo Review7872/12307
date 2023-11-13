@@ -21,32 +21,34 @@ public class PayController {
     private PayService payService;
 
     @GetMapping("/selectAll")
-    @Cacheable(value = "order", key = "#root.methodName")
+    @Cacheable(value = "pay", key = "#root.methodName")
     public List<Pay> selectAll() {
         return payService.selectAll();
     }
 
     @GetMapping("/selectByPayStat")
-    @Cacheable(value = "order", key = "#root.methodName + #payStat")
+    @Cacheable(value = "pay", key = "#root.methodName + #payStat")
     public List<Pay> selectByPayStat(byte payStat) {
         return payService.selectByPayStat(payStat);
     }
 
     @GetMapping("/selectByPayWay")
-    @Cacheable(value = "order", key = "#root.methodName + #payWay")
+    @Cacheable(value = "pay", key = "#root.methodName + #payWay")
     public List<Pay> selectByPayWay(byte payWay) {
         return payService.selectByPayWay(payWay);
     }
 
     @GetMapping("/selectByPayWayAndPayStat")
-    @Cacheable(value = "order", key = "#root.methodName + #payWay + #payStat")
+    @Cacheable(value = "pay", key = "#root.methodName + #payWay + #payStat")
     public List<Pay> selectByPayWayAndPayStat(byte payWay, byte payStat) {
         return payService.selectByPayWayAndPayStat(payWay, payStat);
     }
 
     @GetMapping("/selectByPayId")
     public Pay selectByPayId(long payId) {
-        return payService.selectByPayId(payId);
+        Pay pay = payService.selectByPayId(payId);
+        log.info(pay.toString());
+        return pay;
     }
 
     @PostMapping("/insert")

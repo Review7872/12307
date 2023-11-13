@@ -25,23 +25,23 @@ public interface OrderMapper {
     List<Order> selectAllOrder();
 
     @Select("""
-            select order_id,card_id,car_id,seat_id,pay_id,order_time from order where card_id = #{cardId} order by order_time desc
+            select order_id,card_id,car_id,seat_id,pay_id,order_time from order_t where card_id = #{cardId} order by order_time desc
             """)
     @ResultMap("orderRes")
     List<Order> selectOrderByCardId(Long cardId);
 
     @Insert("""
-            insert into order(order_id,card_id,car_id,seat_id,order_time) values(#{orderId},#{cardId},#{carId},#{seatId},#{orderTime})
+            insert into order_t(order_id,card_id,car_id,seat_id,order_time) values(#{orderId},#{cardId},#{carId},#{seatId},#{orderTime})
             """)
     Integer insertOrder(Long orderId, Long cardId, Long carId, String seatId, String orderTime);
 
     @Update("""
-            update order set seat_id=#{seatId} where order_id = #{orderId}
+            update order_t set seat_id=#{seatId} where order_id = #{orderId}
             """)
     Integer updateOrder(String seatId, Long orderId);
 
     @Update("""
-            update order set pay_id=#{payId} where order_id = #{orderId}
+            update order_t set pay_id=#{payId} where order_id = #{orderId}
             """)
     Integer updatePay(long payId, Long orderId);
 }

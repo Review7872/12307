@@ -19,27 +19,27 @@ public class OrderController {
 
 
     @GetMapping("/select")
-    @Cacheable(value = "orderSelect", key = "#root.methodName")
+    @Cacheable(value = "order", key = "#root.methodName")
     public List<Order> selectAll() {
         return orderService.selectAllOrder();
     }
 
     @GetMapping("/selectByCardId")
-    public List<Order> selectByCardId(@RequestParam Long cardId) {
+    public List<Order> selectByCardId( Long cardId) {
         return orderService.selectOrderByCardId(cardId);
     }
 
     @PostMapping("/update")
     @CacheEvict(value = "order", allEntries = true)
-    public Integer updateSeatByOrderId(@RequestBody Order order) {
-        return orderService.updateOrder(order.getSeatId(), order.getOrderId());
+    public Integer updateSeatByOrderId(String seatId,Long orderId ) {
+        return orderService.updateOrder(seatId, orderId);
     }
 
     @PostMapping("/insert")
     @CacheEvict(value = "order", allEntries = true)
-    public long insert(@RequestBody Order order) {
-        log.info(new StringBuffer().append(order.getCardId()).append("下单成功，车次是").append(order.getCarId()).append("，座位是").append(order.getSeatId()).toString());
-        return orderService.insertOrder(order.getCardId(), order.getCarId(), order.getSeatId());
+    public long insert( Long cardId,Long carId,String seatId ) {
+        log.info(new StringBuffer().append(cardId).append("下单成功，车次是").append(carId).append("，座位是").append(seatId).toString());
+        return orderService.insertOrder(cardId, carId, seatId);
     }
 
     @PostMapping("/pay")
