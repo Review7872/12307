@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-11-10T12:00:23.585Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="oPSP8oYUQSRFj0xJ5jLS" version="22.0.3" type="device">
+<mxfile host="Electron" modified="2023-11-13T15:22:19.836Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="Sc7Uonf44vZvUQacsERj" version="22.0.3" type="device">
   <diagram name="第 1 页" id="jt6VVJo7nu8GzwiU6wVw">
     <mxGraphModel dx="1036" dy="654" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2500" pageHeight="2200" math="0" shadow="0">
       <root>
@@ -94,7 +94,7 @@
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-25" value="&lt;div style=&quot;text-align: left;&quot;&gt;创建车次&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;卖座&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color); text-align: left;&quot;&gt;查询&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color); text-align: left;&quot;&gt;增加座位&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;开启车次&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;查询&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;查询站点信息&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;到站计时&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;增加站点&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;改座&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;占座&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-K4Pnvhbvs1OvobaiyWg-46" vertex="1">
           <mxGeometry x="248" y="183" width="106" height="146" as="geometry" />
         </mxCell>
-        <mxCell id="XzX1OupyAh7tMJAUcPq4-1" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;rotation=-180;" vertex="1" parent="-K4Pnvhbvs1OvobaiyWg-46">
+        <mxCell id="XzX1OupyAh7tMJAUcPq4-1" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;rotation=-180;" parent="-K4Pnvhbvs1OvobaiyWg-46" vertex="1">
           <mxGeometry x="198" y="26" width="50" height="470" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-50" value="Buy Tickets" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
@@ -144,7 +144,7 @@
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-66" value="下单成功，短信通知&lt;br&gt;退款成功，短信通知&lt;br&gt;改签成功，短信通知" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="-K4Pnvhbvs1OvobaiyWg-63" vertex="1">
           <mxGeometry x="171" y="19" width="162" height="138" as="geometry" />
         </mxCell>
-        <mxCell id="-K4Pnvhbvs1OvobaiyWg-68" value="account" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="-K4Pnvhbvs1OvobaiyWg-68" value="OnlineUser" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1494" y="54" width="416" height="456" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-69" value="Buy Tickets" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" parent="-K4Pnvhbvs1OvobaiyWg-68" vertex="1">
@@ -180,7 +180,7 @@
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-100" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" parent="1" vertex="1">
           <mxGeometry x="1739" y="630" width="50" height="365" as="geometry" />
         </mxCell>
-        <mxCell id="-K4Pnvhbvs1OvobaiyWg-106" value="Buy Tickets" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
+        <mxCell id="-K4Pnvhbvs1OvobaiyWg-106" value="Admin" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
           <mxGeometry x="1483" y="1493" width="434" height="332" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-107" value="服务员一切功能&lt;br&gt;增加车次&lt;br&gt;设置车座以及价格" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-K4Pnvhbvs1OvobaiyWg-106" vertex="1">

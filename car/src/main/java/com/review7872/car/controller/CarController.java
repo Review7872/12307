@@ -22,13 +22,13 @@ import java.util.Map;
 @Slf4j
 public class CarController {
     @Autowired
-    CarService carService;
+    private CarService carService;
     @Autowired
-    CarTimeService carTimeService;
+    private CarTimeService carTimeService;
     @Autowired
-    SeatListService seatListService;
+    private SeatListService seatListService;
     @Autowired
-    RedisService redisService;
+    private RedisService redisService;
 
     @PostMapping("/buy")
     @CacheEvict(value = "carCon", allEntries = true)

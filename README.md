@@ -226,23 +226,31 @@ https://github.com/Review7872/OnlineTicketSales.git
   ```shell
   vim /etc/docker/daemon.json
   {
-    "registry-mirrors": [
-      "https://dockerproxy.com",
-      "https://hub-mirror.c.163.com",
-      "https://mirror.baidubce.com",
-      "https://ccr.ccs.tencentyun.com",
-      "https://registry.docker-cn.com",
-      "http://hub-mirror.c.163.com",
-      "https://docker.mirrors.ustc.edu.cn"
-    ]
+      "registry-mirrors": [
+          "https://dockerproxy.com",
+          "https://hub-mirror.c.163.com",
+          "https://mirror.baidubce.com",
+          "https://ccr.ccs.tencentyun.com"
+      ]
   }
   ```
-
+  
 - 启动docker
 
   ```shell
   systemctl start docker
   ```
+
+- 使用docker安装mysql
+
+  ```
+  docker pull mysql:8.0.35
+  docker run --name mysql -e MYSQL_ROOT_PASSWORD=<你的数据库密码>  -v <数据库数据路径映射>:/var/lib/mysql -v <数据库日志路径映射>:/var/log/mysql -v <数据库配置路径映射>:/etc/mysql/conf.d -dp 3306:3306 mysql:8.0.35
+  ```
+
+## 2.注册中心&配置中心
+
+
 
 # <span id="6">6.项目改进日记</span>
 
