@@ -14,4 +14,6 @@ public class Seat implements Serializable {
     private Integer num;
     private Integer remainder;
     private Integer money;
+
+
 }

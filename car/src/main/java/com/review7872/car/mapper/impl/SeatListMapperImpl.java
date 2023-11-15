@@ -19,6 +19,6 @@ public class SeatListMapperImpl implements SeatListMapper {
 
     @Override
     public SeatList getRedisData(String key) {
-        return (SeatList) JSON.parse(redisTemplate.opsForValue().get(key));
+        return JSON.parseObject(redisTemplate.opsForValue().get(key),SeatList.class);
     }
 }

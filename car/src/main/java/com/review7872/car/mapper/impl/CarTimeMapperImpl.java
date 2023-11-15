@@ -17,6 +17,6 @@ public class CarTimeMapperImpl implements CarTimeMapper {
     }
 
     public CarTimeList getRedisData(String key) {
-        return (CarTimeList) JSON.parse(redisTemplate.opsForValue().get(key));
+        return JSON.parseObject(redisTemplate.opsForValue().get(key),CarTimeList.class);
     }
 }

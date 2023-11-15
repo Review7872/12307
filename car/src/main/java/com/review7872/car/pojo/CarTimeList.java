@@ -50,13 +50,14 @@ public class CarTimeList extends ArrayList<CarTime> implements Serializable {
                 b.set(true);
             }
             if (b.get()) {
-                int index = getIndex(seatId, seatList);
-                SeatInfo seatInfo = i.getSeats().get(index);
-                seatInfo.setOccupation(1);
-                seatInfo.setCardId(cardId);
-                i.getSeats().set(index, seatInfo);
                 if (endRoute.equals(i.getRoute())) {
                     b.set(false);
+                }else {
+                    int index = getIndex(seatId, seatList);
+                    SeatInfo seatInfo = i.getSeats().get(index);
+                    seatInfo.setOccupation(1);
+                    seatInfo.setCardId(cardId);
+                    i.getSeats().set(index, seatInfo);
                 }
             }
         });
@@ -69,13 +70,14 @@ public class CarTimeList extends ArrayList<CarTime> implements Serializable {
                 b.set(true);
             }
             if (b.get()) {
-                int index = getIndex(seatId, seatList);
-                SeatInfo seatInfo = i.getSeats().get(index);
-                seatInfo.setOccupation(2);
-                seatInfo.setCardId(null);
-                i.getSeats().set(index, seatInfo);
                 if (endRoute.equals(i.getRoute())) {
                     b.set(false);
+                }else {
+                    int index = getIndex(seatId, seatList);
+                    SeatInfo seatInfo = i.getSeats().get(index);
+                    seatInfo.setOccupation(0);
+                    seatInfo.setCardId(0L);
+                    i.getSeats().set(index, seatInfo);
                 }
             }
         });
@@ -97,13 +99,14 @@ public class CarTimeList extends ArrayList<CarTime> implements Serializable {
                 b.set(true);
             }
             if (b.get()) {
-                int index = getIndex(seatId, seatList);
-                SeatInfo seatInfo = carTime.getSeats().get(index);
-                if (seatInfo.getOccupation() == 1) {
-                    return seatInfo.getCardId();
-                }
                 if (endRoute.equals(carTime.getRoute())) {
                     b.set(false);
+                }else {
+                    int index = getIndex(seatId, seatList);
+                    SeatInfo seatInfo = carTime.getSeats().get(index);
+                    if (seatInfo.getOccupation() == 1) {
+                        return seatInfo.getCardId();
+                    }
                 }
             }
         }

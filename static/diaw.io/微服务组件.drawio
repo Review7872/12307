@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-11-13T15:22:19.836Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="Sc7Uonf44vZvUQacsERj" version="22.0.3" type="device">
+<mxfile host="Electron" modified="2023-11-15T12:54:55.195Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="-ZOKQQAKEFDPIvmT9rms" version="22.0.3" type="device">
   <diagram name="第 1 页" id="jt6VVJo7nu8GzwiU6wVw">
-    <mxGraphModel dx="1036" dy="654" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2500" pageHeight="2200" math="0" shadow="0">
+    <mxGraphModel dx="1884" dy="1189" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2500" pageHeight="2200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -166,19 +166,19 @@
           <mxGeometry x="76" y="200" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-96" value="waiter" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
-          <mxGeometry x="1490" y="581" width="434" height="426" as="geometry" />
+          <mxGeometry x="1480" y="744.5" width="434" height="426" as="geometry" />
         </mxCell>
-        <mxCell id="-K4Pnvhbvs1OvobaiyWg-105" value="查询车次&lt;br&gt;查询用户信息&lt;br&gt;为用户购票&lt;br&gt;为用户改签&lt;br&gt;为用户退票&lt;br&gt;让用户付款" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-K4Pnvhbvs1OvobaiyWg-96" vertex="1">
-          <mxGeometry x="280" y="53" width="94" height="353" as="geometry" />
+        <mxCell id="-K4Pnvhbvs1OvobaiyWg-105" value="查询车次&lt;br&gt;查询用户信息&lt;br&gt;为用户购票&lt;br&gt;为用户改签&lt;br&gt;为用户退票&lt;br&gt;让用户付款&lt;br&gt;设置列车到站时间" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-K4Pnvhbvs1OvobaiyWg-96" vertex="1">
+          <mxGeometry x="280" y="53" width="129" height="353" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-98" value="Buy Tickets" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" parent="-K4Pnvhbvs1OvobaiyWg-96" vertex="1">
           <mxGeometry x="75" y="197" width="120" height="65" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-99" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;rotation=-180;" parent="1" vertex="1">
-          <mxGeometry x="1689" y="628" width="50" height="369" as="geometry" />
+          <mxGeometry x="1679" y="787" width="50" height="369" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-100" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" parent="1" vertex="1">
-          <mxGeometry x="1739" y="630" width="50" height="365" as="geometry" />
+          <mxGeometry x="1729" y="789" width="50" height="365" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-106" value="Admin" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
           <mxGeometry x="1483" y="1493" width="434" height="332" as="geometry" />
@@ -194,21 +194,6 @@
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-110" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" parent="1" vertex="1">
           <mxGeometry x="1732" y="1528" width="50" height="285" as="geometry" />
-        </mxCell>
-        <mxCell id="-K4Pnvhbvs1OvobaiyWg-117" value="steward" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
-          <mxGeometry x="1477" y="1046" width="434" height="426" as="geometry" />
-        </mxCell>
-        <mxCell id="-K4Pnvhbvs1OvobaiyWg-118" value="查询车次&lt;br&gt;查看用户信息&lt;br&gt;为用户改签&lt;br&gt;记录车辆站点信息" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-K4Pnvhbvs1OvobaiyWg-117" vertex="1">
-          <mxGeometry x="280" y="53" width="106" height="353" as="geometry" />
-        </mxCell>
-        <mxCell id="-K4Pnvhbvs1OvobaiyWg-119" value="Buy Tickets" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" parent="-K4Pnvhbvs1OvobaiyWg-117" vertex="1">
-          <mxGeometry x="75" y="197" width="120" height="65" as="geometry" />
-        </mxCell>
-        <mxCell id="-K4Pnvhbvs1OvobaiyWg-120" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;rotation=-180;" parent="1" vertex="1">
-          <mxGeometry x="1676" y="1093" width="50" height="369" as="geometry" />
-        </mxCell>
-        <mxCell id="-K4Pnvhbvs1OvobaiyWg-121" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" parent="1" vertex="1">
-          <mxGeometry x="1726" y="1095" width="50" height="365" as="geometry" />
         </mxCell>
         <mxCell id="-K4Pnvhbvs1OvobaiyWg-123" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;rotation=-90;" parent="1" vertex="1">
           <mxGeometry x="889.5" y="1430" width="50" height="873" as="geometry" />

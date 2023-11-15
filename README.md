@@ -174,17 +174,13 @@ https://github.com/Review7872/OnlineTicketSales.git
 
 ![](static/images/img_16.png)
 
-### 4.乘务员组件
-
-![](static/images/img_18.png)
-
-### 5.管理员组件
+### 4.管理员组件
 
  此组件为最高管理员组件，拥有添加车次与座位价格的权限。
 
 ![](static/images/img_17.png)
 
-### 6.服务器网关
+### 5.服务器网关
 
  此组件作用为对访问的身份信息进行身份认证、鉴权与服务引导，同时与前端服务器Nginx结合解决前后端分离中的跨域问题。
 

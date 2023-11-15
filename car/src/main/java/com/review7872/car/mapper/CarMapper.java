@@ -29,13 +29,13 @@ public interface CarMapper {
     List<Car> selectAllByOpen(int open);
 
     @Select("""
-            select car_id,route,car_num,open from car where open = #{open} and car_num = #{carNum}
+            select car_id,route,car_num,open from car where open = #{open} and car_num like concat('%',#{carNum},'%')
             """)
     @ResultMap("carRes")
     List<Car> selectAllByOpenAndCarNum(int open, String carNum);
 
     @Select("""
-            select car_id,route,car_num,open from car where route like '%'#{beginRoute}'%'#{endRoute}'%' and open = #{open}
+            select car_id,route,car_num,open from car where route like concat('%',#{beginRoute},'%',#{endRoute},'%') and open = #{open}
             """)
     @ResultMap("carRes")
     List<Car> selectAllByRoute(String beginRoute, String endRoute, int open);
@@ -67,7 +67,7 @@ public interface CarMapper {
     int updateOpen(String open, long carId);
 
     @Select("""
-            select car_id,route,car_num,open from car where car_num like '%'#{carNum}'%'
+            select car_id,route,car_num,open from car where car_num like concat('%',#{carNum},'%')
             """)
     @ResultMap("carRes")
     List<Car> selectByCarNum(String carNum);

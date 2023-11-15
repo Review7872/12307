@@ -17,9 +17,9 @@ public interface CarService {
 
     Car selectOne(long carId);
 
-    long insertCar(Map<String, String> routeAndTime, List<Seat> seatS, String carNum, int open);
+    long insertCar(List<Map<String,String>> routeAndTime, List<Seat> seatS, String carNum, int open);
 
-    int updateRoute(Map<String, String> routeAndTime, long carId);
+    int updateRoute(List<Map<String,String>> routeAndTime, long carId);
 
     int updateCarNum(String carNum, long carId);
 

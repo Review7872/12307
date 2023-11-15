@@ -54,7 +54,7 @@ public class CarTimeServiceImpl implements CarTimeService {
     }
 
     @Override
-    public void createCatTime(String key, Map<String, String> routeAndTime, List<Seat> seatList) {
+    public void createCatTime(String key, List<Map<String,String>> routeAndTime, List<Seat> seatList) {
         redisson.getReadWriteLock(REDIS_LOCK).writeLock().lock(5, TimeUnit.SECONDS);
         try {
             CarTimeList carTimes = new CarTimeList();
@@ -62,9 +62,9 @@ public class CarTimeServiceImpl implements CarTimeService {
             seatList.forEach(i -> count.addAndGet(i.getNum()));
             List<SeatInfo> seatInfoArrayList = new ArrayList<>(count.get());
             for (int i = 0; i < count.get(); i++) {
-                seatInfoArrayList.set(i, new SeatInfo(0, 0L));
+                seatInfoArrayList.add(i, new SeatInfo(0, 0L));
             }
-            routeAndTime.forEach((m, n) -> carTimes.add(new CarTime(m, n, "", seatInfoArrayList)));
+            routeAndTime.forEach(i -> carTimes.add(new CarTime(i.get("route"), i.get("time"), "", seatInfoArrayList)));
             carTimeMapper.setRedisData(key, carTimes);
         } finally {
             redisson.getReadWriteLock(REDIS_LOCK).writeLock().unlock();
@@ -72,12 +72,12 @@ public class CarTimeServiceImpl implements CarTimeService {
     }
 
     @Override
-    public void updateCatTime(String key, Map<String, String> routeAndTime) {
+    public void updateCatTime(String key, List<Map<String,String>> routeAndTime) {
         redisson.getReadWriteLock(REDIS_LOCK).writeLock().lock(5, TimeUnit.SECONDS);
         try {
             CarTimeList redisData = carTimeMapper.getRedisData(key);
             List<SeatInfo> seatInfoArrayList = redisData.get(0).getSeats();
-            routeAndTime.forEach((m, n) -> redisData.add(new CarTime(m, n, "", seatInfoArrayList)));
+            routeAndTime.forEach(i -> redisData.add(new CarTime(i.get("route"), i.get("time"), "", seatInfoArrayList)));
             carTimeMapper.setRedisData(key, redisData);
         } finally {
             redisson.getReadWriteLock(REDIS_LOCK).writeLock().unlock();

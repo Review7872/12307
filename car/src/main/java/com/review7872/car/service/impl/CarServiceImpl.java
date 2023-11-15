@@ -56,10 +56,10 @@ public class CarServiceImpl implements CarService {
 
     @Override
     @CacheEvict(value = "carInfo", allEntries = true)
-    public long insertCar(Map<String, String> routeAndTime, List<Seat> seatS, String carNum, int open) {
+    public long insertCar(List<Map<String,String>> routeAndTime, List<Seat> seatS, String carNum, int open) {
         long carId = snowflakeIdGenerator.nextId();
         StringBuffer strRoute = new StringBuffer();
-        routeAndTime.forEach((m, n) -> strRoute.append("-").append(m));
+        routeAndTime.forEach(i -> strRoute.append("-").append(i.get("route")));
         seatListService.createSeat(
                 new StringBuffer("seat").append("_").append(carId).append("_").append(carNum).toString()
                 , seatS);
@@ -72,9 +72,9 @@ public class CarServiceImpl implements CarService {
 
     @Override
     @CacheEvict(value = "carInfo", allEntries = true)
-    public int updateRoute(Map<String, String> routeAndTime, long carId) {
+    public int updateRoute(List<Map<String,String>> routeAndTime, long carId) {
         StringBuffer strRoute = new StringBuffer();
-        routeAndTime.forEach((m, n) -> strRoute.append("-").append(m));
+        routeAndTime.forEach(i -> strRoute.append("-").append(i.get("route")));
         Car car = carMapper.selectOne(carId);
         carTimeService.updateCatTime(
                 new StringBuffer("time").append("_").append(carId).append("_").append(car.getCarNum()).toString(),
