@@ -201,5 +201,5 @@ https://github.com/Review7872/OnlineTicketSales.git
 
 # <span id="6">6.项目改进日记</span>
 
-> [项目日记](#./static/markdowm/ProjectDiary.md)以日记的形式记录了本人在完善此项目时的一些经验与心里活动
+> [项目日记](/static/markdowm/ProjectDiary.md)以日记的形式记录了本人在完善此项目时的一些经验与心里活动
 
