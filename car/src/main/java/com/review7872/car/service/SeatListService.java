@@ -13,7 +13,7 @@ public interface SeatListService {
 
     void set(String key, SeatList seatList);
 
-    void createSeat(String seatCarIdCarNum, List<Seat> seatS);
+    int createSeat(String seatCarIdCarNum, List<Seat> seatS);
 
     SeatList select(String seatCarIdCarNum);
 

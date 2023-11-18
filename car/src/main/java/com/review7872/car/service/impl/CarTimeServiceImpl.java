@@ -54,7 +54,7 @@ public class CarTimeServiceImpl implements CarTimeService {
     }
 
     @Override
-    public void createCatTime(String key, List<Map<String,String>> routeAndTime, List<Seat> seatList) {
+    public int createCatTime(String key, List<Map<String,String>> routeAndTime, List<Seat> seatList) {
         redisson.getReadWriteLock(REDIS_LOCK).writeLock().lock(5, TimeUnit.SECONDS);
         try {
             CarTimeList carTimes = new CarTimeList();
@@ -66,6 +66,7 @@ public class CarTimeServiceImpl implements CarTimeService {
             }
             routeAndTime.forEach(i -> carTimes.add(new CarTime(i.get("route"), i.get("time"), "", seatInfoArrayList)));
             carTimeMapper.setRedisData(key, carTimes);
+            return 1;
         } finally {
             redisson.getReadWriteLock(REDIS_LOCK).writeLock().unlock();
         }

@@ -18,7 +18,7 @@ public class SeatListServiceImpl implements SeatListService {
     @Autowired
     private SeatListMapper seatListMapper;
     @Autowired
-    RedissonClient redisson;
+    private RedissonClient redisson;
     public static final String REDIS_LOCK = "Seat";
 
 
@@ -49,14 +49,17 @@ public class SeatListServiceImpl implements SeatListService {
 
     /**
      * 创建一个列车的座位信息
+     *
+     * @return
      */
     @Override
-    public void createSeat(String seatCarIdCarNum, List<Seat> seatS) {
+    public int createSeat(String seatCarIdCarNum, List<Seat> seatS) {
         redisson.getReadWriteLock(REDIS_LOCK).writeLock().lock(5, TimeUnit.SECONDS);
         try {
             SeatList seats = new SeatList();
             seatS.forEach(i -> seats.add(new Seat(i.getSeatLevel(), i.getNum(), i.getRemainder(), i.getMoney())));
             seatListMapper.setRedisData(seatCarIdCarNum, seats);
+            return 1;
         } finally {
             redisson.getReadWriteLock(REDIS_LOCK).writeLock().unlock();
         }

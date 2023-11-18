@@ -15,7 +15,7 @@ public interface CarTimeService {
 
     void set(String key, CarTimeList carTimes);
 
-    void createCatTime(String key, List<Map<String,String>> routeAndTime, List<Seat> seatList);
+    int createCatTime(String key, List<Map<String,String>> routeAndTime, List<Seat> seatList);
 
     void updateCatTime(String key, List<Map<String,String>> routeAndTime);
 

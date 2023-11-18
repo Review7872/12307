@@ -3,9 +3,7 @@ package com.review7872.car.service.impl;
 import com.review7872.car.mapper.CarMapper;
 import com.review7872.car.pojo.Car;
 import com.review7872.car.pojo.Seat;
-import com.review7872.car.service.CarService;
-import com.review7872.car.service.CarTimeService;
-import com.review7872.car.service.SeatListService;
+import com.review7872.car.service.*;
 import com.review7872.car.utils.SnowflakeIdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -27,6 +25,8 @@ public class CarServiceImpl implements CarService {
     private SeatListService seatListService;
     @Autowired
     private SnowflakeIdGenerator snowflakeIdGenerator;
+    @Autowired
+    private RedisCreate redisCreate;
 
     @Override
     public List<Car> selectAll() {
@@ -60,13 +60,9 @@ public class CarServiceImpl implements CarService {
         long carId = snowflakeIdGenerator.nextId();
         StringBuffer strRoute = new StringBuffer();
         routeAndTime.forEach(i -> strRoute.append("-").append(i.get("route")));
-        seatListService.createSeat(
-                new StringBuffer("seat").append("_").append(carId).append("_").append(carNum).toString()
-                , seatS);
-        carTimeService.createCatTime(
-                new StringBuffer("time").append("_").append(carId).append("_").append(carNum).toString()
-                , routeAndTime, seatS);
-        return carMapper.insertCar(carId, strRoute.toString(), carNum, open);
+        carMapper.insertCar(carId, strRoute.toString(), carNum, open);
+        redisCreate.create(carId, carNum, seatS, routeAndTime);
+        return carId;
 
     }
 
@@ -76,10 +72,11 @@ public class CarServiceImpl implements CarService {
         StringBuffer strRoute = new StringBuffer();
         routeAndTime.forEach(i -> strRoute.append("-").append(i.get("route")));
         Car car = carMapper.selectOne(carId);
+        int i = carMapper.updateRoute(strRoute.toString(), carId);
         carTimeService.updateCatTime(
                 new StringBuffer("time").append("_").append(carId).append("_").append(car.getCarNum()).toString(),
                 routeAndTime);
-        return carMapper.updateRoute(strRoute.toString(), carId);
+        return i;
 
     }
 

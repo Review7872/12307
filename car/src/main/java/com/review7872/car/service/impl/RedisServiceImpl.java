@@ -17,11 +17,11 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class RedisServiceImpl implements RedisService {
     @Autowired
-    CarService carService;
+    private CarService carService;
     @Autowired
-    CarTimeService carTimeService;
+    private CarTimeService carTimeService;
     @Autowired
-    SeatListService seatListService;
+    private SeatListService seatListService;
 
     @Override
     public int buyTicket(long carId, String beginRoute, String endRoute, long cardId, String seatId) {
